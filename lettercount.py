@@ -1,14 +1,25 @@
-def put_text_into_list():
-    f = open("myfile.txt")
-    filetext = f.read()
-    char_list=list(filetext)
-    char_list_lower=char_list.lower
-    return char_list_lower
 
-def parse_text(char_list_lower):
-    a = 0
+def put_text_into_list():
+    f = open("twain.txt")
+    filetext = f.read()
+    filetext_lower = filetext.lower()
+    return filetext_lower
+
+def parse_text(char_list):
     alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-    for letter in alphabet:
-        char_list_lower.count(letter)
-         
+    counts = [0]*26
+    for letter in char_list:
+        if letter in alphabet:
+            pos = alphabet.index(letter)
+            counts[pos] += 1
+    print counts
+    ## print char_list.count(letter), letter
+    #a - 4
+    #b - 8
+
 def main():
+    text_in_list = put_text_into_list()
+    parse_text(text_in_list)
+
+if __name__ == "__main__":
+    main()
